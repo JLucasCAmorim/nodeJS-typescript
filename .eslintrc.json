@@ -7,7 +7,9 @@
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -20,7 +22,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "rules": {
     "prettier/prettier": "error",
@@ -31,11 +34,17 @@
       {
         "ts": "never"
       }
-    ]
+    ],
+    "@typescript-eslint/camelcase": "off"
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "alias": {
+        "map": [
+          ["~", "./src"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
     }
   }
 }
